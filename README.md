@@ -6,6 +6,7 @@
 
 BHDNet is a highly efficient bilateral hierarchical decoding network designed for real-time semantic segmentation.
 ![Overall Architecture](figs/overall.png)
+Note: BFPPM denotes the Bidirectional Factorized Pyramid Pooling Module. MCAM denotes the Multi-scale Channel Aggregation Module. BCFM denotes the Bilateral Complementary Fusion Module. The black dashed lines represent components utilized solely during the training phase and removed during inference.
 
 ## Overview
 
