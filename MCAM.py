@@ -36,7 +36,7 @@ class MCAM(nn.Module):
 
 
 if __name__ == '__main__':
-    x = torch.randn(2, 128, 64, 128)   # 与网络实际输入对齐：planes*4=128, H=64, W=128
+    x = torch.randn(2, 128, 64, 128)   
     block = MCAM(k_size=3)
     output = block(x)
     print(f"Input shape:     {x.shape}")   # (2, 128, 64, 128)
