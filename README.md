@@ -9,7 +9,9 @@ BHDNet is a highly efficient bilateral hierarchical decoding network designed fo
 
 ## Overview
 
-Note: BFPPM denotes the Bidirectional Factorized Pyramid Pooling Module. MCAM denotes the Multi-scale Channel Aggregation Module. BCFM denotes the Bilateral Complementary Fusion Module. The black dashed lines represent components utilized solely during the training phase and removed during inference.
+Balancing segmentation accuracy with inference speed remains a formidable challenge in real-time autonomous driving scenarios. Existing approaches often suffer from irreversible detail degradation caused by repeated downsampling, and the inherent distribution gap between high-level contextual semantics and low-level structural details.
+
+To address these limitations, we propose the **Bilateral Hierarchical Decoding Network (BHDNet)**. Specifically, we introduce the **Bidirectional Factorized Pyramid Pooling Module (BFPPM)** to overcome the limitations of traditional pooling and efficiently capture multi-scale anisotropic context. Furthermore, to effectively bridge the gap between high-level semantics and fine-grained details, we propose the **Bilateral Complementary Fusion Module (BCFM)** and the **Multi-scale Channel Aggregation Module (MCAM)**. Utilizing Triplet Cross-dimensional Gated Attention (TCGA), BCFM harmonizes the heterogeneous representations, ensuring precise spatio-channel feature recalibration.
 
 ## Datasets
 
