@@ -172,7 +172,7 @@ class BFPPM_C(nn.Module):
             nn.AvgPool2d(kernel_size=(1, 5), stride=(1, 2), padding=(0, 2)),
             BatchNorm(inplanes, momentum=bn_mom),
             nn.ReLU(inplace=True),
-            # 2. 中间标准 3x3 卷积 (平滑特征，消除混叠，维持通道数不变)
+            # 2. 中间标准 3x3 卷积 
             nn.Conv2d(inplanes, branch_planes, kernel_size=3, padding=1, bias=False),
             # 3. 垂直池化提取上下文
             nn.AvgPool2d(kernel_size=(5, 1), stride=(2, 1), padding=(2, 0)),
@@ -288,7 +288,7 @@ class BFPPM_C(nn.Module):
         fused_feats = [c2f + f2c for c2f, f2c in zip(c2f_feats, f2c_feats)]
 
         # =======================================================
-        # Step 3: 并行细化 (完美适配原版的 Process 模块)
+        # Step 3: 并行细化
         # =======================================================
         x_list = []
         x_list.append(fused_feats[0])
@@ -314,7 +314,7 @@ class BFPPM_D(nn.Module):
             nn.AvgPool2d(kernel_size=(1, 5), stride=(1, 2), padding=(0, 2)),
             BatchNorm(inplanes, momentum=bn_mom),
             nn.ReLU(inplace=True),
-            # 2. 中间标准 3x3 卷积 (平滑特征，消除混叠，维持通道数不变)
+            # 2. 中间标准 3x3 卷积 
             nn.Conv2d(inplanes, branch_planes, kernel_size=3, padding=1, bias=False),
             # 3. 垂直池化提取上下文
             nn.AvgPool2d(kernel_size=(5, 1), stride=(2, 1), padding=(2, 0)),
@@ -381,7 +381,7 @@ class BFPPM_D(nn.Module):
         self.process4 = nn.Sequential(
             BatchNorm(branch_planes, momentum=bn_mom),
             nn.ReLU(inplace=True),
-            # dilation=7, padding=7 (对于全局/超大尺度特征，7 的空洞率能提供极致的宏观感受野)
+            # dilation=7, padding=7 
             nn.Conv2d(branch_planes, branch_planes, kernel_size=3, padding=7, dilation=7, bias=False),
         )
 
@@ -438,7 +438,7 @@ class BFPPM_D(nn.Module):
         fused_feats = [c2f + f2c for c2f, f2c in zip(c2f_feats, f2c_feats)]
 
         # =======================================================
-        # Step 3: 并行细化 (完美适配原版的 Process 模块)
+        # Step 3: 并行细化
         # =======================================================
         x_list = []
         x_list.append(fused_feats[0])
